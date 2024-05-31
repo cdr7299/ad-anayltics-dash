@@ -9,30 +9,30 @@ const Charts = () => {
     <>
       <section>
         <div className="flex m-4 gap-2">
-          <div className="flex-1 px-2 justify-center w-16 bg-gray-700 shadow rounded h-300px">
+          <div className="flex-1 p-4 justify-center w-16 bg-gray-700 shadow rounded h-300px">
             <div className="">
-              <p className="text-gray-900 font-bold">Total returns</p>
+              <p className="text-gray-200 font-semibold">Total returns</p>
               <p className="py-4 font-bold">$30,000 </p>
               <p className="text-green-300">+34.5%</p>
             </div>
           </div>
-          <div className="flex-1 px-2 justify-center w-16 bg-gray-700 shadow rounded max-h-300px">
+          <div className="flex-1 p-4 justify-center w-16 bg-gray-700 shadow rounded max-h-300px">
             <div className="">
-              <p className="text-gray-900 font-bold">Total sales</p>
+              <p className="text-gray-200 font-semibold">Total sales</p>
               <p className="py-4 font-bold">$30,000 </p>
               <p className="text-green-300">+34.5%</p>
             </div>
           </div>
-          <div className="flex-1 px-2 justify-center w-16  bg-gray-700 shadow rounded max-h-300px">
+          <div className="flex-1 p-4 justify-center w-16  bg-gray-700 shadow rounded max-h-300px">
             <div className="">
-              <p className="text-gray-900 font-bold">Total subscriptions</p>
+              <p className="text-gray-200 font-semibold">Total subscriptions</p>
               <p className="py-4 font-bold">$30,000 </p>
               <p className="text-green-300">+34.5%</p>
             </div>
           </div>
-          <div className="flex-1 px-2 justify-center w-16  bg-gray-700 shadow rounded h-300px">
+          <div className="flex-1 p-4 justify-center w-16  bg-gray-700 shadow rounded h-300px">
             <div className="">
-              <p className="text-gray-900 font-bold">Total returns</p>
+              <p className="text-gray-200 font-semibold">Total returns</p>
               <p className="py-4 font-bold ">$30,000 </p>
               <p className="text-green-300">+34.5%</p>
             </div>
