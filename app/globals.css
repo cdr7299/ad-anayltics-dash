@@ -16,6 +16,10 @@
   }
 }
 
+.test {
+  background-color: #494545;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(

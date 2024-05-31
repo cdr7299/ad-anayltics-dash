@@ -11,16 +11,28 @@ import {
 
 import advertiser_data from "@/app/_data/advertiser_data.json";
 const colors = [
-  "#8884d8",
-  "#82ca9d",
-  "#ff7300",
+  "#0000ff",
   "#387908",
   "#ff0000",
-  "#00ff00",
-  "#0000ff",
-  "#ffff00",
+  "#ff7300",
   "#ff00ff",
+  "#ffff00",
+  "#00ff00",
   "#00ffff",
+];
+const monthNames = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 export interface AdvertiserData {
   advertiser: string;
@@ -44,7 +56,23 @@ const LineChartPlot = () => {
     });
     return dateEntry;
   });
+  const renderCustomLabel = ({ payload, x, y, width, height, value }) => {
+    const formattedDate = new Date(payload.value);
+    const day = formattedDate.getDate();
 
+    const month = monthNames[formattedDate.getMonth()];
+
+    const finalDate = `${day} ${month}`;
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="#494545"
+        textAnchor="middle"
+        dy={16}
+      >{`${finalDate}`}</text>
+    );
+  };
   return (
     <>
       <ResponsiveContainer width="100%" height="100%">
@@ -59,12 +87,15 @@ const LineChartPlot = () => {
             bottom: 5,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
-          <YAxis />
-          <YAxis />
+          <XAxis
+            dataKey="date"
+            tick={renderCustomLabel}
+            strokeWidth={2}
+            stroke="#494545"
+          />
+          <YAxis strokeWidth={2} stroke="#494545" />
           <Tooltip />
-          <Legend />
+          <Legend align="right" verticalAlign="top" />
 
           {advertisers.map((advertiser, index) => (
             <Line
@@ -72,6 +103,7 @@ const LineChartPlot = () => {
               type="monotone"
               dataKey={advertiser}
               stroke={colors[index % colors.length]}
+              strokeWidth="3"
             />
           ))}
         </LineChart>

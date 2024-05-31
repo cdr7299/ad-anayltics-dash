@@ -6,8 +6,8 @@ import CountryImpressionsPlot from "./_components/country-impressions-plot";
 
 const Charts = () => {
   return (
-    <>
-      <section>
+    <div className="size-full flex flex-col">
+      {/* <section>
         <div className="flex m-4 gap-2">
           <div className="flex-1 p-4 justify-center w-16 bg-gray-700 shadow rounded h-300px">
             <div className="">
@@ -38,27 +38,27 @@ const Charts = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <section className="flex my-4 px-4 gap-3">
-        <div className="w-1/2 h-[350px] bg-gray-700 rounded p-4">
+      <section className="flex my-6 px-4 gap-6">
+        <div className="w-1/2 h-[350px] bg-slate-300 border-[1px] border-slate-500 rounded-lg p-6">
           <AdImpressions />
         </div>
 
-        <div className="w-1/2 h-[350px] bg-gray-700 rounded p-4">
+        <div className="w-1/2 h-[350px] bg-slate-300 border-[1px] border-slate-500 rounded-lg p-6">
           <AdClicks />
         </div>
       </section>
 
-      <section className="flex my-4 px-4 gap-2">
-        <div className=" w-1/2 h-[350px] bg-gray-700 rounded">
+      <section className="flex my-6 px-4 gap-6">
+        <div className=" w-1/2 h-[450px] bg-slate-300 border-[1px] border-slate-500 rounded-lg p-6">
           <BarChartPlot />
         </div>
-        <div className=" w-1/2 h-[350px] bg-gray-700 rounded">
+        <div className=" w-1/2 h-[450px] bg-slate-300 border-[1px] border-slate-500 rounded-lg p-6">
           <CountryImpressionsPlot />
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

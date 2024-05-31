@@ -1,5 +1,40 @@
 [
   {
+    "advertiser": "Nutanix",
+    "date": "2016-02-01",
+    "impressions": 21365,
+    "clicks": 268,
+    "ctr": 1.25
+  },
+  {
+    "advertiser": "Nutanix",
+    "date": "2016-02-02",
+    "impressions": 500,
+    "clicks": 168,
+    "ctr": 1.25
+  },
+  {
+    "advertiser": "Nutanix",
+    "date": "2016-02-03",
+    "impressions": 2365,
+    "clicks": 468,
+    "ctr": 1.25
+  },
+  {
+    "advertiser": "Nutanix",
+    "date": "2016-02-04",
+    "impressions": 1365,
+    "clicks": 868,
+    "ctr": 1.25
+  },
+  {
+    "advertiser": "Nutanix",
+    "date": "2016-02-05",
+    "impressions": 2165,
+    "clicks": 268,
+    "ctr": 1.25
+  },
+  {
     "advertiser": "Syscox",
     "date": "2016-02-01",
     "impressions": 21365,
