@@ -49,7 +49,7 @@ const Charts = () => {
 
   return (
     <div className="size-full flex flex-col px-6 py-6">
-      <section className="md:sticky md:top-0 w-full rounded-lg bg-slate-300 dark:bg-slate-500 z-50 px-4 py-4 flex md:flex-row flex-col justify-between md:items-center border-2 border-slate-400 ">
+      <section className="md:sticky md:top-0 w-full rounded-lg bg-slate-200 dark:bg-slate-500 z-50 px-4 py-4 flex md:flex-row flex-col justify-between md:items-center border-2 border-slate-400 ">
         <div className="flex gap-2 items-center">
           <span className="font-semibold"> Advertisers: </span>
           <MultiSelect

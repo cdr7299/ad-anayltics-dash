@@ -48,7 +48,7 @@ const MultiSelect = ({
   return (
     <div className="container" ref={containerRef}>
       <div
-        className={styles.multipleSelect}
+        className={`${styles.multipleSelect} bg-slate-100`}
         onClick={() => setToggleOpen((toggle) => !toggle)}
       >
         <div className={`${styles.placeholder} dark:text-black`}>

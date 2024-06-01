@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import "react-datepicker/dist/react-datepicker.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +18,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Navbar />
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${inter.className} bg-zinc-100 dark:bg-black dark:text-white text-black`}
+      >
+        <ThemeProvider
+          enableSystem={false}
+          attribute="class"
+          defaultTheme="light"
+        >
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

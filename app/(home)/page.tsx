@@ -14,7 +14,7 @@ export default function Home() {
         variants={heroTextVariants}
         className="flex w-full gap-8 flex-col  items-center justify-center"
       >
-        <h1 className="text-4xl text-center font-bold">
+        <h1 className="text-4xl text-center font-bold px-1">
           {`Welcome to`}
           <span className="text-primary ml-2">Advertiser Analytics</span>
         </h1>
