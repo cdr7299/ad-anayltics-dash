@@ -7,39 +7,23 @@ import {
   Legend,
   Bar,
 } from "recharts";
-import advertiser_data from "@/app/_data/advertiser_data.json";
 import { AdvertiserData } from "@/types/advertiser-data";
-const colors = [
-  "#ff7300",
-  "#0000ff",
-  "#ff00ff",
-  "#387908",
-  "#ff0000",
-  "#ffff00",
-  "#00ff00",
-  "#00ffff",
-];
-const BarChartPlot = () => {
-  const data: AdvertiserData[] = advertiser_data;
-  const advertisers = [...new Set(data.map((item) => item.advertiser))];
-  const dates = [...new Set(data.map((item) => item.date))];
+import { getCtrByAdvertiser } from "../../charts.utils";
+import { CHART_COLORS } from "../../charts.constants";
 
-  const combinedData = dates.map((date) => {
-    let dateEntry = { date };
-    data.forEach((item) => {
-      if (item.date === date) {
-        dateEntry[item.advertiser] = item.ctr;
-      }
-    });
-    return dateEntry;
-  });
+const BarChartPlot = ({
+  advertiser_data,
+}: {
+  advertiser_data: AdvertiserData[];
+}) => {
+  const { data, advertisers } = getCtrByAdvertiser(advertiser_data);
   return (
     <>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={730}
           height={250}
-          data={combinedData}
+          data={data}
           margin={{
             top: 5,
             right: 30,
@@ -55,7 +39,7 @@ const BarChartPlot = () => {
             <Bar
               key={advertiser}
               dataKey={advertiser}
-              fill={colors[index % colors.length]}
+              fill={CHART_COLORS[index % CHART_COLORS.length]}
             />
           ))}
         </BarChart>

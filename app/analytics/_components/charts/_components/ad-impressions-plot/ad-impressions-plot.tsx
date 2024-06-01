@@ -1,6 +1,4 @@
 import {
-  CartesianGrid,
-  Label,
   Legend,
   Line,
   LineChart,
@@ -10,54 +8,31 @@ import {
   YAxis,
 } from "recharts";
 
-import advertiser_data from "@/app/_data/advertiser_data.json";
 import { AdvertiserData } from "@/types/advertiser-data";
-const monthNames = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sept",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-const colors = [
-  "#0000ff",
-  "#387908",
-  "#ff0000",
-  "#ff7300",
-  "#ff00ff",
-  "#ffff00",
-  "#00ff00",
-  "#00ffff",
-];
+import {
+  getFormattedDate,
+  getParsedImpressionsByAdvertiser,
+} from "../../charts.utils";
+import { CHART_COLORS } from "../../charts.constants";
 
-const LineChartPlot = () => {
-  const data: AdvertiserData[] = advertiser_data;
-  const advertisers = [...new Set(data.map((item) => item.advertiser))];
-  const dates = [...new Set(data.map((item) => item.date))];
+const LineChartPlot = ({
+  advertiser_data,
+}: {
+  advertiser_data: AdvertiserData[];
+}) => {
+  const { data, advertisers } =
+    getParsedImpressionsByAdvertiser(advertiser_data);
 
-  const combinedData = dates.map((date) => {
-    let dateEntry = { date };
-    data.forEach((item) => {
-      if (item.date === date) {
-        dateEntry[item.advertiser] = item.impressions;
-      }
-    });
-    return dateEntry;
-  });
-  const renderCustomLabel = ({ payload, x, y, width, height, value }) => {
-    const formattedDate = new Date(payload.value);
-    const day = formattedDate.getDate();
-
-    const month = monthNames[formattedDate.getMonth()];
-
-    const finalDate = `${day} ${month}`;
+  const renderCustomLabel = ({
+    payload,
+    x,
+    y,
+  }: {
+    payload: { value: string };
+    x: string | number;
+    y: string | number;
+  }) => {
+    const date = getFormattedDate(payload.value);
     return (
       <text
         x={x}
@@ -65,7 +40,7 @@ const LineChartPlot = () => {
         fill="#494545"
         textAnchor="middle"
         dy={16}
-      >{`${finalDate}`}</text>
+      >{`${date}`}</text>
     );
   };
   return (
@@ -74,7 +49,7 @@ const LineChartPlot = () => {
         <LineChart
           width={500}
           height={300}
-          data={combinedData}
+          data={data}
           margin={{
             top: 5,
             right: 30,
@@ -88,11 +63,7 @@ const LineChartPlot = () => {
             stroke="#494545"
             tick={renderCustomLabel}
           />
-          <YAxis
-            strokeWidth={2}
-            stroke="#494545"
-            // label={{ value: "Impressions", angle: -90, position: "insideLeft" }}
-          ></YAxis>
+          <YAxis strokeWidth={2} stroke="#494545"></YAxis>
           <Tooltip />
           <Legend align="right" verticalAlign="top" />
 
@@ -101,7 +72,7 @@ const LineChartPlot = () => {
               key={advertiser}
               type="monotone"
               dataKey={advertiser}
-              stroke={colors[index % colors.length]}
+              stroke={CHART_COLORS[index % CHART_COLORS.length]}
               strokeWidth="3"
             />
           ))}

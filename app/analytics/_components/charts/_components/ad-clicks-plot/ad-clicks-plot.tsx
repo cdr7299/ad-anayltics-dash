@@ -10,30 +10,12 @@ import {
 } from "recharts";
 
 import advertiser_data from "@/app/_data/advertiser_data.json";
-const colors = [
-  "#0000ff",
-  "#387908",
-  "#ff0000",
-  "#ff7300",
-  "#ff00ff",
-  "#ffff00",
-  "#00ff00",
-  "#00ffff",
-];
-const monthNames = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sept",
-  "Oct",
-  "Nov",
-  "Dec",
-];
+import {
+  getFormattedDate,
+  getParsedClicksByAdvertiser,
+} from "../../charts.utils";
+import { CHART_COLORS } from "../../charts.constants";
+
 export interface AdvertiserData {
   advertiser: string;
   date: string;
@@ -42,27 +24,22 @@ export interface AdvertiserData {
   ctr: number;
 }
 
-const LineChartPlot = () => {
-  const data: AdvertiserData[] = advertiser_data;
-  const advertisers = [...new Set(data.map((item) => item.advertiser))];
-  const dates = [...new Set(data.map((item) => item.date))];
-
-  const combinedData = dates.map((date) => {
-    let dateEntry = { date };
-    data.forEach((item) => {
-      if (item.date === date) {
-        dateEntry[item.advertiser] = item.clicks;
-      }
-    });
-    return dateEntry;
-  });
-  const renderCustomLabel = ({ payload, x, y, width, height, value }) => {
-    const formattedDate = new Date(payload.value);
-    const day = formattedDate.getDate();
-
-    const month = monthNames[formattedDate.getMonth()];
-
-    const finalDate = `${day} ${month}`;
+const LineChartPlot = ({
+  advertiser_data,
+}: {
+  advertiser_data: AdvertiserData[];
+}) => {
+  const { data, advertisers } = getParsedClicksByAdvertiser(advertiser_data);
+  const renderCustomLabel = ({
+    payload,
+    x,
+    y,
+  }: {
+    payload: { value: string };
+    x: string | number;
+    y: string | number;
+  }) => {
+    const date = getFormattedDate(payload.value);
     return (
       <text
         x={x}
@@ -70,7 +47,7 @@ const LineChartPlot = () => {
         fill="#494545"
         textAnchor="middle"
         dy={16}
-      >{`${finalDate}`}</text>
+      >{`${date}`}</text>
     );
   };
   return (
@@ -79,7 +56,7 @@ const LineChartPlot = () => {
         <LineChart
           width={500}
           height={300}
-          data={combinedData}
+          data={data}
           margin={{
             top: 5,
             right: 30,
@@ -102,7 +79,7 @@ const LineChartPlot = () => {
               key={advertiser}
               type="monotone"
               dataKey={advertiser}
-              stroke={colors[index % colors.length]}
+              stroke={CHART_COLORS[index % CHART_COLORS.length]}
               strokeWidth="3"
             />
           ))}
