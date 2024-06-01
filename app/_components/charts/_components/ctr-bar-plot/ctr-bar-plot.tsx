@@ -29,6 +29,7 @@ const BarChartPlot = () => {
           <Tooltip />
           <Legend />
           <Bar dataKey="ctr" fill="#350a6c" />
+          <Bar dataKey="ctr" fill="#951a6c" />
         </BarChart>
       </ResponsiveContainer>
     </>

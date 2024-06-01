@@ -6,7 +6,7 @@ import CountryImpressionsPlot from "./_components/country-impressions-plot";
 
 const Charts = () => {
   return (
-    <div className="size-full flex flex-col">
+    <div className="size-full flex flex-col px-6">
       {/* <section>
         <div className="flex m-4 gap-2">
           <div className="flex-1 p-4 justify-center w-16 bg-gray-700 shadow rounded h-300px">
@@ -39,8 +39,8 @@ const Charts = () => {
           </div>
         </div>
       </section> */}
-
-      <section className="flex my-6 px-4 gap-6">
+      <section className="w-full rounded-lg">Hiya</section>
+      <section className="flex my-6 gap-6">
         <div className="w-1/2 h-[350px] bg-slate-300 border-[1px] border-slate-500 rounded-lg p-6">
           <AdImpressions />
         </div>
@@ -50,11 +50,11 @@ const Charts = () => {
         </div>
       </section>
 
-      <section className="flex my-6 px-4 gap-6">
-        <div className=" w-1/2 h-[450px] bg-slate-300 border-[1px] border-slate-500 rounded-lg p-6">
+      <section className="flex flex-col my-6 px-4 gap-6">
+        <div className=" w-full h-[450px] bg-slate-300 border-[1px] border-slate-500 rounded-lg p-6">
           <BarChartPlot />
         </div>
-        <div className=" w-1/2 h-[450px] bg-slate-300 border-[1px] border-slate-500 rounded-lg p-6">
+        <div className=" w-full h-[700px] bg-slate-300 border-[1px] border-slate-500 rounded-lg p-6">
           <CountryImpressionsPlot />
         </div>
       </section>
