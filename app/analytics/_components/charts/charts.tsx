@@ -1,20 +1,22 @@
 "use client";
-import AdImpressions from "./_components/ad-impressions-plot";
-import AdClicks from "./_components/ad-clicks-plot";
-import BarChartPlot from "./_components/ctr-bar-plot/ctr-bar-plot";
-import CountryImpressionsPlot from "./_components/country-impressions-plot";
-import advertiser_data_json from "@/app/_data/advertiser_data.json";
-import country_data_json from "@/app/_data/country_data.json";
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import DatePicker from "react-datepicker";
 import { AdvertiserData } from "@/types/advertiser-data";
 import { CountryData } from "@/types/country-data";
+import advertiser_data_json from "@/app/_data/advertiser_data.json";
+import country_data_json from "@/app/_data/country_data.json";
 import MultiSelect from "@/components/ui/multi-select";
 import {
   getEndDate,
   getStartDate,
   getUniqueAdvertisersAndUniqueDates,
 } from "./charts.utils";
-import DatePicker from "react-datepicker";
+import AdClicks from "./_components/ad-clicks-plot";
+import AdImpressions from "./_components/ad-impressions-plot";
+import BarChartPlot from "./_components/ctr-bar-plot/ctr-bar-plot";
+import CountryImpressionsPlot from "./_components/country-impressions-plot";
+
+import CustomDatePickerInput from "./custom-date-picker-input";
 
 const Charts = () => {
   const [advertiserData, setAdvertiserData] =
@@ -32,29 +34,26 @@ const Charts = () => {
 
   const [startDate, setStartDate] = useState<Date | null>(getStartDate(dates));
   const [endDate, setEndDate] = useState<Date | null>(getEndDate(dates));
-  console.log(startDate);
-
-  useEffect(() => {
-    const newAdvertiserData = advertiser_data_json.filter((row) =>
-      selectedAdvertisers.includes(row.advertiser)
-    );
-    setAdvertiserData([...newAdvertiserData]);
-  }, [selectedAdvertisers]);
 
   useEffect(() => {
     const newAdvertiserData = advertiser_data_json.filter((row) => {
       const rowDate = new Date(row.date);
       if (!startDate || !endDate) return true; // for the null case
-      if (rowDate >= startDate && rowDate <= endDate) return true;
+      if (
+        rowDate >= startDate &&
+        rowDate <= endDate &&
+        selectedAdvertisers.includes(row.advertiser)
+      )
+        return true;
     });
     setAdvertiserData([...newAdvertiserData]);
-  }, [startDate, endDate]);
+  }, [selectedAdvertisers, startDate, endDate]);
 
   return (
     <div className="size-full flex flex-col px-6 py-6">
-      <section className="w-full rounded-lg bg-slate-100 px-4 py-4 flex justify-between items-center ">
+      <section className="sticky top-0 w-full rounded-lg bg-slate-300 z-50 px-4 py-4 flex md:flex-row flex-col justify-between items-center border-2 border-slate-400 ">
         <div className="flex gap-2 items-center">
-          <span> Advertisers: </span>
+          <span className="font-semibold"> Advertisers: </span>
           <MultiSelect
             data={advertisers}
             onChange={(newData: string[]) =>
@@ -66,38 +65,50 @@ const Charts = () => {
           <span> Start Date: </span>
           <DatePicker
             selected={startDate}
+            minDate={getStartDate(dates)}
+            maxDate={getEndDate(dates)}
             onChange={(date) => setStartDate(date)}
             selectsStart
             startDate={startDate}
             endDate={endDate}
+            customInput={React.createElement(CustomDatePickerInput)}
           />
           <span> End Date: </span>
-
           <DatePicker
             selected={endDate}
             onChange={(date) => setEndDate(date)}
             selectsEnd
+            minDate={getStartDate(dates)}
+            maxDate={getEndDate(dates)}
             startDate={startDate}
             endDate={endDate}
-            minDate={startDate}
+            customInput={React.createElement(CustomDatePickerInput)}
           />
         </div>
       </section>
-      <section className="flex flex-col md:flex-row my-6 gap-6">
-        <div className="md:w-1/2 h-[350px] bg-slate-100 border-[1px] border-slate-500 rounded-lg p-6">
+      <section className="flex flex-col md:flex-row mt-6 gap-6">
+        <div className="md:w-1/2 h-[400px] bg-slate-100 border-[1px] border-slate-500 rounded-lg p-6">
+          <h2 className="w-full text-center font-bold text-xl">Impressions</h2>
           <AdImpressions advertiserData={advertiserData} />
         </div>
 
-        <div className="md:w-1/2 h-[350px] bg-slate-100 border-[1px] border-slate-500 rounded-lg p-6">
+        <div className="md:w-1/2 h-[400px] bg-slate-100 border-[1px] border-slate-500 rounded-lg p-6">
+          <h2 className="w-full text-center font-bold text-xl">Clicks</h2>
           <AdClicks advertiserData={advertiserData} />
         </div>
       </section>
 
-      <section className="flex flex-col my-6 px-4 gap-6">
-        <div className=" w-full h-[450px] bg-slate-100 border-[1px] border-slate-500 rounded-lg p-6">
+      <section className="flex flex-col my-6 gap-6">
+        <div className=" w-full h-[500px] bg-slate-100 border-[1px] border-slate-500 rounded-lg p-6">
+          <h2 className="w-full text-center font-bold text-xl">
+            Click-through Rate
+          </h2>
           <BarChartPlot advertiserData={advertiserData} />
         </div>
-        <div className=" w-full h-[700px] bg-slate-100 border-[1px] border-slate-500 rounded-lg p-6">
+        <div className=" w-full h-[650px] bg-slate-100 border-[1px] border-slate-500 rounded-lg p-6">
+          <h2 className="w-full text-center font-bold text-xl mb-4">
+            Total impressions by Country
+          </h2>
           <CountryImpressionsPlot countryData={countryData} />
         </div>
       </section>

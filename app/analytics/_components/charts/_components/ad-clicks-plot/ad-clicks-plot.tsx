@@ -1,5 +1,4 @@
 import {
-  CartesianGrid,
   Legend,
   Line,
   LineChart,
@@ -9,12 +8,12 @@ import {
   YAxis,
 } from "recharts";
 
-import advertiser_data from "@/app/_data/advertiser_data.json";
 import {
   getFormattedDate,
   getParsedClicksByAdvertiser,
 } from "../../charts.utils";
 import { CHART_COLORS } from "../../charts.constants";
+import CustomTooltip from "../custom-tooltip";
 
 export interface AdvertiserData {
   advertiser: string;
@@ -52,7 +51,7 @@ const LineChartPlot = ({
   };
   return (
     <>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="90%">
         <LineChart
           width={500}
           height={300}
@@ -71,7 +70,8 @@ const LineChartPlot = ({
             stroke="#494545"
           />
           <YAxis strokeWidth={2} stroke="#494545" />
-          <Tooltip />
+          <Tooltip content={<CustomTooltip />} />
+
           <Legend align="right" verticalAlign="top" />
 
           {advertisers.map((advertiser, index) => (

@@ -1,14 +1,16 @@
-import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from "recharts";
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
-import { CHART_COLORS } from "../../charts.constants";
 import { CountryData } from "@/types/country-data";
+import CustomPieLabel from "./custom-label-pie-chart";
+import { CHART_COLORS } from "../../charts.constants";
 import { getImpressionsByCountry } from "../../charts.utils";
 
 const PieChartPlot = ({ countryData }: { countryData: CountryData[] }) => {
   const data = getImpressionsByCountry(countryData);
+
   return (
     <>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="90%">
         <PieChart width={730} height={250}>
           <Pie
             data={data}
@@ -16,10 +18,17 @@ const PieChartPlot = ({ countryData }: { countryData: CountryData[] }) => {
             nameKey="country"
             cx="50%"
             cy="50%"
+            startAngle={90}
+            endAngle={-270}
+            labelLine={false}
+            paddingAngle={1}
+            fontSize={13}
+            isAnimationActive={false}
+            label={CustomPieLabel}
             fill="#8884d8"
-            label
+            minAngle={2}
           >
-            {data.map((entry, index) => (
+            {data.map((_, index) => (
               <Cell key={`cell-${index}`} fill={CHART_COLORS[index]} />
             ))}
           </Pie>

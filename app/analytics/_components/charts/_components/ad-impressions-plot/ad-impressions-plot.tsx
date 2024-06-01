@@ -14,6 +14,7 @@ import {
   getParsedImpressionsByAdvertiser,
 } from "../../charts.utils";
 import { CHART_COLORS } from "../../charts.constants";
+import CustomTooltip from "../custom-tooltip";
 
 const LineChartPlot = ({
   advertiserData,
@@ -45,7 +46,7 @@ const LineChartPlot = ({
   };
   return (
     <>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="90%">
         <LineChart
           width={500}
           height={300}
@@ -64,9 +65,8 @@ const LineChartPlot = ({
             tick={renderCustomLabel}
           />
           <YAxis strokeWidth={2} stroke="#494545"></YAxis>
-          <Tooltip />
+          <Tooltip content={<CustomTooltip />} />
           <Legend align="right" verticalAlign="top" />
-
           {advertisers.map((advertiser, index) => (
             <Line
               key={advertiser}

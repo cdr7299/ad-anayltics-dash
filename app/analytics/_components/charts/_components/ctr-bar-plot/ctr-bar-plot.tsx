@@ -1,15 +1,16 @@
 import {
-  ResponsiveContainer,
+  Bar,
   BarChart,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  Legend,
-  Bar,
 } from "recharts";
 import { AdvertiserData } from "@/types/advertiser-data";
-import { getCtrByAdvertiser } from "../../charts.utils";
+import { getCtrByAdvertiser, getFormattedDate } from "../../charts.utils";
 import { CHART_COLORS } from "../../charts.constants";
+import CustomTooltip from "../custom-tooltip";
 
 const BarChartPlot = ({
   advertiserData,
@@ -17,9 +18,30 @@ const BarChartPlot = ({
   advertiserData: AdvertiserData[];
 }) => {
   const { data, advertisers } = getCtrByAdvertiser(advertiserData);
+  const renderCustomLabel = ({
+    payload,
+    x,
+    y,
+  }: {
+    payload: { value: string };
+    x: string | number;
+    y: string | number;
+  }) => {
+    const date = getFormattedDate(payload.value);
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="#494545"
+        textAnchor="middle"
+        dy={16}
+      >{`${date}`}</text>
+    );
+  };
+
   return (
     <>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="90%">
         <BarChart
           width={730}
           height={250}
@@ -31,9 +53,9 @@ const BarChartPlot = ({
             bottom: 5,
           }}
         >
-          <XAxis dataKey="date" />
-          <YAxis />
-          <Tooltip />
+          <XAxis dataKey="date" tick={renderCustomLabel} strokeWidth={2} />
+          <YAxis strokeWidth={2} />
+          <Tooltip content={<CustomTooltip />} />
           <Legend />
           {advertisers.map((advertiser, index) => (
             <Bar
