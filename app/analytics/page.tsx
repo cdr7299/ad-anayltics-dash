@@ -1,4 +1,4 @@
-import Charts from "../_components/charts/charts";
+import Charts from "./_components/charts/charts";
 
 export default async function Home() {
   return (
