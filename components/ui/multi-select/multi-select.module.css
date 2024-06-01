@@ -5,7 +5,7 @@
 }
 
 .multipleSelect {
-  width: 250px;
+  width: 200px;
   height: 40px;
   border: 1px solid rgb(198, 198, 198);
   display: flex;
@@ -39,7 +39,7 @@
 }
 
 .dropdown {
-  width: 250px;
+  width: 200px;
   position: absolute;
   min-height: 150px;
   margin-top: 4px;

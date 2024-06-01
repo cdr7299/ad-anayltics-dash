@@ -56,12 +56,16 @@ const BarChartPlot = ({
           margin={{
             top: 5,
             right: 30,
-            left: 20,
             bottom: 5,
           }}
         >
-          <XAxis dataKey="date" tick={renderCustomLabel} strokeWidth={2} />
-          <YAxis strokeWidth={2} />
+          <XAxis
+            dataKey="date"
+            tick={renderCustomLabel}
+            strokeWidth={2}
+            stroke="#494545"
+          />
+          <YAxis strokeWidth={2} stroke="#494545" />
           <Tooltip content={<CustomTooltip />} />
           <Legend />
           {advertisers.map((advertiser, index) => (

@@ -8,7 +8,7 @@ const CustomTooltip = ({
 }: TooltipProps<number, string>) => {
   if (active) {
     return (
-      <div className="bg-white/90 border-2 border-slate-200 p-4 rounded-lg">
+      <div className="bg-white/90 dark:bg-black/90 border-2 border-slate-200 dark:border-slate-500 p-4 rounded-lg">
         <h3 className="w-full text-center text-lg mb-2 font-bold">
           {getFormattedDate(label)}
         </h3>

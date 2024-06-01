@@ -51,7 +51,9 @@ const MultiSelect = ({
         className={styles.multipleSelect}
         onClick={() => setToggleOpen((toggle) => !toggle)}
       >
-        <div className={styles.placeholder}>{placeholderText}</div>
+        <div className={`${styles.placeholder} dark:text-black`}>
+          {placeholderText}
+        </div>
         <div
           className={`${styles.icon} ${
             toggleOpen ? styles.triangleUp : styles.triangleDown
@@ -61,7 +63,7 @@ const MultiSelect = ({
       {toggleOpen && (
         <div className={styles.dropdown}>
           {data.map((d) => (
-            <div key={d} className={styles.dropdownItem}>
+            <div key={d} className={`${styles.dropdownItem} dark:text-black`}>
               <input
                 type="checkbox"
                 id={d}
@@ -69,6 +71,7 @@ const MultiSelect = ({
                 value={d}
                 onChange={handleChange}
                 checked={selectedItems.includes(d)}
+                className="dark:text-black"
               />
               <label htmlFor={d} className="label w-full">
                 {d}
