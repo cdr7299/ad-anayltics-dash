@@ -2,7 +2,16 @@ import { AdvertiserData } from "@/types/advertiser-data";
 import { MONTH_NAMES } from "./charts.constants";
 import { CountryData } from "@/types/country-data";
 
-//TODO: Make type inference work better, intermediate data structures are not optimal probably
+//TODO: Make type inference work better for parsing api data, intermediate data structures are not optimal probably if you have to fight the types
+
+const getStartDate = (date: string[]) => {
+  const parsedDates = date.map((d) => new Date(d).getTime());
+  return new Date(Math.min.apply(null, parsedDates));
+};
+const getEndDate = (date: string[]) => {
+  const parsedDates = date.map((d) => new Date(d).getTime());
+  return new Date(Math.max.apply(null, parsedDates));
+};
 
 const getFormattedDate = (dateString: string) => {
   const formattedDate = new Date(dateString);
@@ -85,6 +94,9 @@ const getImpressionsByCountry = (country_data: CountryData[]) => {
 };
 
 export {
+  getStartDate,
+  getEndDate,
+  getUniqueAdvertisersAndUniqueDates,
   getParsedImpressionsByAdvertiser,
   getFormattedDate,
   getParsedClicksByAdvertiser,

@@ -16,12 +16,12 @@ import {
 import { CHART_COLORS } from "../../charts.constants";
 
 const LineChartPlot = ({
-  advertiser_data,
+  advertiserData,
 }: {
-  advertiser_data: AdvertiserData[];
+  advertiserData: AdvertiserData[];
 }) => {
   const { data, advertisers } =
-    getParsedImpressionsByAdvertiser(advertiser_data);
+    getParsedImpressionsByAdvertiser(advertiserData);
 
   const renderCustomLabel = ({
     payload,

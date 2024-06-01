@@ -12,11 +12,11 @@ import { getCtrByAdvertiser } from "../../charts.utils";
 import { CHART_COLORS } from "../../charts.constants";
 
 const BarChartPlot = ({
-  advertiser_data,
+  advertiserData,
 }: {
-  advertiser_data: AdvertiserData[];
+  advertiserData: AdvertiserData[];
 }) => {
-  const { data, advertisers } = getCtrByAdvertiser(advertiser_data);
+  const { data, advertisers } = getCtrByAdvertiser(advertiserData);
   return (
     <>
       <ResponsiveContainer width="100%" height="100%">

@@ -1,0 +1,88 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+}
+
+.multipleSelect {
+  width: 250px;
+  height: 40px;
+  border: 1px solid rgb(198, 198, 198);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+  background-color: #d3dbdbd8;
+  border-radius: 16px;
+  padding: 0 4px;
+}
+
+.placeholder {
+  margin-left: 10px;
+  width: 100%;
+}
+
+.icon {
+  width: 0;
+  height: 0;
+  border-left: 7.5px solid transparent;
+  border-right: 7.5px solid transparent;
+  margin: 10px;
+}
+
+.triangleUp {
+  border-bottom: 8.5px solid #4444448b;
+}
+
+.triangleDown {
+  border-top: 8.5px solid #4444448b;
+}
+
+.dropdown {
+  width: 250px;
+  position: absolute;
+  min-height: 150px;
+  margin-top: 4px;
+  border: 1px solid rgb(198, 198, 198);
+  background-color: #f2f5f5;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  gap: 18px;
+  overflow: scroll;
+  z-index: 99999;
+}
+
+.dropdownItem {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 12px;
+  width: 100%;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+.dropdownItem:hover {
+  background-color: rgb(230, 57, 70);
+  color: white;
+  transition: 0.3s;
+}
+
+.dropdownItem > * {
+  cursor: pointer;
+}
+
+.label {
+  margin-left: 5px;
+}
+
+.selectContainer {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.selectContainer > * {
+  cursor: pointer;
+}

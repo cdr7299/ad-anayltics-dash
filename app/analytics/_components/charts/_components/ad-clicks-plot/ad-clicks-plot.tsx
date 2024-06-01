@@ -25,11 +25,11 @@ export interface AdvertiserData {
 }
 
 const LineChartPlot = ({
-  advertiser_data,
+  advertiserData,
 }: {
-  advertiser_data: AdvertiserData[];
+  advertiserData: AdvertiserData[];
 }) => {
-  const { data, advertisers } = getParsedClicksByAdvertiser(advertiser_data);
+  const { data, advertisers } = getParsedClicksByAdvertiser(advertiserData);
   const renderCustomLabel = ({
     payload,
     x,

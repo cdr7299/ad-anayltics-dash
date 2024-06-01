@@ -11,7 +11,16 @@ const heroTextVariants: Variants = {
       ease: "easeOut",
     },
   },
-  hidden: { opacity: 0, y: 100 },
+  hidden: { opacity: 0, y: 200 },
 };
 
-export { heroTextVariants };
+const buttonVariants: Variants = {
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6 },
+  },
+  hidden: { y: 100, opacity: 0 },
+};
+
+export { heroTextVariants, buttonVariants };

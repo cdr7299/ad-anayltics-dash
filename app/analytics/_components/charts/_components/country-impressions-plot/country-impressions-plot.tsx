@@ -4,8 +4,8 @@ import { CHART_COLORS } from "../../charts.constants";
 import { CountryData } from "@/types/country-data";
 import { getImpressionsByCountry } from "../../charts.utils";
 
-const PieChartPlot = ({ country_data }: { country_data: CountryData[] }) => {
-  const data = getImpressionsByCountry(country_data);
+const PieChartPlot = ({ countryData }: { countryData: CountryData[] }) => {
+  const data = getImpressionsByCountry(countryData);
   return (
     <>
       <ResponsiveContainer width="100%" height="100%">
