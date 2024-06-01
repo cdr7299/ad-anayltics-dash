@@ -2,7 +2,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import DatePicker from "react-datepicker";
 import { AdvertiserData } from "@/types/advertiser-data";
-import { CountryData } from "@/types/country-data";
 import advertiser_data_json from "@/app/_data/advertiser_data.json";
 import country_data_json from "@/app/_data/country_data.json";
 import MultiSelect from "@/components/ui/multi-select";
@@ -10,19 +9,18 @@ import {
   getEndDate,
   getStartDate,
   getUniqueAdvertisersAndUniqueDates,
+  sortByDate,
 } from "./charts.utils";
 import AdClicks from "./_components/ad-clicks-plot";
 import AdImpressions from "./_components/ad-impressions-plot";
 import BarChartPlot from "./_components/ctr-bar-plot/ctr-bar-plot";
 import CountryImpressionsPlot from "./_components/country-impressions-plot";
-
 import CustomDatePickerInput from "./custom-date-picker-input";
 
 const Charts = () => {
-  const [advertiserData, setAdvertiserData] =
-    useState<AdvertiserData[]>(advertiser_data_json);
-  const [countryData, setCountryData] =
-    useState<CountryData[]>(country_data_json);
+  const [advertiserData, setAdvertiserData] = useState<AdvertiserData[]>(
+    sortByDate(advertiser_data_json)
+  );
 
   const { advertisers, dates } = useMemo(
     () => getUniqueAdvertisersAndUniqueDates(advertiser_data_json),
@@ -36,7 +34,7 @@ const Charts = () => {
   const [endDate, setEndDate] = useState<Date | null>(getEndDate(dates));
 
   useEffect(() => {
-    const newAdvertiserData = advertiser_data_json.filter((row) => {
+    const newAdvertiserData = sortByDate(advertiser_data_json).filter((row) => {
       const rowDate = new Date(row.date);
       if (!startDate || !endDate) return true; // for the null case
       if (
@@ -109,7 +107,7 @@ const Charts = () => {
           <h2 className="w-full text-center font-bold text-xl mb-4">
             Total impressions by Country
           </h2>
-          <CountryImpressionsPlot countryData={countryData} />
+          <CountryImpressionsPlot countryData={country_data_json} />
         </div>
       </section>
     </div>

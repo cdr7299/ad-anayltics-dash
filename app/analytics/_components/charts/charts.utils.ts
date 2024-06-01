@@ -4,6 +4,11 @@ import { MONTH_NAMES } from "./charts.constants";
 
 //TODO: Make type inference work better for parsing api data, intermediate data structures are not optimal probably if you have to fight the types
 
+const sortByDate = (data: AdvertiserData[]) => {
+  data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  return data;
+};
+
 const getStartDate = (date: string[]) => {
   const parsedDates = date.map((d) => new Date(d).getTime());
   return new Date(Math.min.apply(null, parsedDates));
@@ -94,6 +99,7 @@ const getImpressionsByCountry = (country_data: CountryData[]) => {
 };
 
 export {
+  sortByDate,
   getStartDate,
   getEndDate,
   getUniqueAdvertisersAndUniqueDates,

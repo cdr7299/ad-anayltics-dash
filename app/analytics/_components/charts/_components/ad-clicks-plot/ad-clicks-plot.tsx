@@ -29,6 +29,13 @@ const LineChartPlot = ({
   advertiserData: AdvertiserData[];
 }) => {
   const { data, advertisers } = getParsedClicksByAdvertiser(advertiserData);
+  if (!data.length) {
+    return (
+      <div className="size-full text-lg flex items-center justify-center">
+        No data, please adjust filters
+      </div>
+    );
+  }
   const renderCustomLabel = ({
     payload,
     x,

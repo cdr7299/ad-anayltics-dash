@@ -12,9 +12,9 @@ const CustomTooltip = ({
         <h3 className="w-full text-center text-lg mb-2 font-bold">
           {getFormattedDate(label)}
         </h3>
-        {payload?.map((item) => (
-          <div key={item.value} className="flex gap-2 text-lg font-semibold">
-            <p style={{ color: item.color }}>{item.name}</p>:<p>{item.value}</p>
+        {payload?.map(({ value = "testName", name = "defaultName", color }) => (
+          <div key={value + name} className="flex gap-2 text-lg font-semibold">
+            <p style={{ color: color }}>{name}</p>:<p>{value}</p>
           </div>
         ))}
       </div>

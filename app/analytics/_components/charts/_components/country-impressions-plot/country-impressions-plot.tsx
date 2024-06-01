@@ -7,7 +7,13 @@ import { getImpressionsByCountry } from "../../charts.utils";
 
 const PieChartPlot = ({ countryData }: { countryData: CountryData[] }) => {
   const data = getImpressionsByCountry(countryData);
-
+  if (!data.length) {
+    return (
+      <div className="size-full text-lg flex items-center justify-center">
+        No data, please adjust filters
+      </div>
+    );
+  }
   return (
     <>
       <ResponsiveContainer width="100%" height="90%">
