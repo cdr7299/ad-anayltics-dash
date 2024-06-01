@@ -24,7 +24,7 @@ const MultiSelect = ({
 
   const placeholderText = selectedItems.length
     ? `${selectedItems.length} selected`
-    : "Choose at least one item";
+    : "None selected";
   const handleClickOutside = (event: MouseEvent) => {
     if (
       containerRef.current &&
