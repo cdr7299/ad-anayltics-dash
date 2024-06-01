@@ -11,6 +11,7 @@ import {
 } from "recharts";
 
 import advertiser_data from "@/app/_data/advertiser_data.json";
+import { AdvertiserData } from "@/types/advertiser-data";
 const monthNames = [
   "Jan",
   "Feb",
@@ -35,13 +36,6 @@ const colors = [
   "#00ff00",
   "#00ffff",
 ];
-export interface AdvertiserData {
-  advertiser: string;
-  date: string;
-  impressions: number;
-  clicks: number;
-  ctr: number;
-}
 
 const LineChartPlot = () => {
   const data: AdvertiserData[] = advertiser_data;
