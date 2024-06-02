@@ -19,7 +19,10 @@ export default function Home() {
           <span className="text-primary ml-2">Advertiser Analytics</span>
         </h1>
         <motion.div variants={buttonVariants} className="w-fit">
-          <Button onClick={() => router.push("/analytics")}>
+          <Button
+            aria-label="Navigate To Analytics Page"
+            onClick={() => router.push("/analytics")}
+          >
             Go to Analytics Home
           </Button>
         </motion.div>

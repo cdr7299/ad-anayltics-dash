@@ -1,11 +1,7 @@
 import { AdvertiserData } from "@/types/advertiser-data";
-import {
-  getUniqueAdvertisersAndUniqueDates,
-  nFormatter,
-} from "../../charts.utils";
+import { nFormatter } from "../../charts.utils";
 
 const Summary = ({ advertiserData }: { advertiserData: AdvertiserData[] }) => {
-  const { advertisers } = getUniqueAdvertisersAndUniqueDates(advertiserData);
   const totalClicks = advertiserData.reduce(
     (acc, curr) => acc + Number(curr.clicks),
     0
@@ -16,10 +12,10 @@ const Summary = ({ advertiserData }: { advertiserData: AdvertiserData[] }) => {
   );
   const avgCtr =
     advertiserData.reduce((acc, curr) => acc + Number(curr.ctr), 0) /
-    (advertiserData.length / advertisers.length);
+    advertiserData.length;
   const avgClicks =
     advertiserData.reduce((acc, curr) => acc + Number(curr.clicks), 0) /
-    (advertiserData.length / advertisers.length);
+    advertiserData.length;
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4  w-full gap-4">

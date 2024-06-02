@@ -31,7 +31,7 @@ const Filters = ({
     </div>
     <div className="flex gap-2 justify-start md:items-center text-sm">
       <div>
-        <span className="mr-2"> From </span>
+        <label className="mr-2"> From </label>
         <DatePicker
           selected={startDate}
           minDate={getStartDate(dates)}
@@ -46,7 +46,7 @@ const Filters = ({
         />
       </div>
       <div>
-        <span className="mx-2"> To </span>
+        <label className="mx-2"> To </label>
         <DatePicker
           selected={endDate}
           onChange={(date) => setEndDate(date)}

@@ -29,6 +29,7 @@ const ThemeSwitch = () => {
     >
       <button
         id="theme-toggle"
+        aria-label="switch color theme"
         onClick={toggleTheme}
         type="button"
         className={`${
