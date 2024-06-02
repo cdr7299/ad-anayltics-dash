@@ -48,10 +48,10 @@ const MultiSelect = ({
   return (
     <div className="container" ref={containerRef}>
       <div
-        className={`${styles.multipleSelect} bg-slate-100`}
+        className={`${styles.multipleSelect} bg-white dark:bg-slate-600 dark:text-white`}
         onClick={() => setToggleOpen((toggle) => !toggle)}
       >
-        <div className={`${styles.placeholder} dark:text-black`}>
+        <div className={`${styles.placeholder} dark:text-white`}>
           {placeholderText}
         </div>
         <div
@@ -61,9 +61,11 @@ const MultiSelect = ({
         />
       </div>
       {toggleOpen && (
-        <div className={styles.dropdown}>
+        <div
+          className={`${styles.dropdown} bg-white dark:bg-slate-600 dark:text-white`}
+        >
           {data.map((d) => (
-            <div key={d} className={`${styles.dropdownItem} dark:text-black`}>
+            <div key={d} className={`${styles.dropdownItem} dark:text-white`}>
               <input
                 type="checkbox"
                 id={d}

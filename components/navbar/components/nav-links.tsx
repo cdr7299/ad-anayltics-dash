@@ -6,11 +6,11 @@ const NavLinks = () => {
   const pathName = usePathname();
 
   return (
-    <ul className="flex gap-4 items-center justify-center text-base font-semibold bg-slate-200 dark:bg-slate-500 border-slate-400/20 border-2 py-1 rounded-lg px-2 md:px-8">
+    <ul className="flex gap-2 items-center justify-center text-sm font-semibold py-1 rounded-md px-2 md:px-8">
       <Link
         href="/"
         className={`px-4 py-2 rounded-md hover:bg-red-400/60 transition duration-500 underline-offset-4 ${
-          pathName === "/" ? "underline" : ""
+          pathName === "/" ? "bg-red-500/30" : ""
         }`}
       >
         Home
@@ -18,7 +18,7 @@ const NavLinks = () => {
       <Link
         href="/analytics"
         className={`px-4 py-2 rounded-md hover:bg-red-400/60 transition duration-500 underline-offset-4 ${
-          pathName === "/analytics" ? "underline" : ""
+          pathName === "/analytics" ? "bg-red-400/60" : ""
         }`}
       >
         Analytics

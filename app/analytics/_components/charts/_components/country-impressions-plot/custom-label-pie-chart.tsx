@@ -9,6 +9,7 @@ const CustomPieLabel = ({
   name,
   fontSize,
   index = 0,
+  theme,
 }: PieLabelRenderProps) => {
   if (outerRadius && percent) {
     const RADIAN = Math.PI / 180;
@@ -26,13 +27,12 @@ const CustomPieLabel = ({
       endX = startX + (outerRadius as number) * -cos * 2 + 100;
       textAnchor = "start";
     }
-
     return (
       <g>
         <path
           d={`M${startX},${startY}L${startX},${middleY}L${endX},${middleY}`}
           fill="none"
-          stroke="#000"
+          stroke={theme === "dark" ? "#fff" : "#000"}
           strokeWidth={2}
         />
         <text
@@ -40,10 +40,12 @@ const CustomPieLabel = ({
           y={middleY + fontSize / 2}
           textAnchor={textAnchor}
           fontSize={fontSize}
+          fill={theme === "dark" ? "#fff" : "#000"}
         >{`${name || ""} ${(percent * 100).toFixed(1)}%`}</text>
       </g>
     );
   }
+  return null;
 };
 
 export default CustomPieLabel;

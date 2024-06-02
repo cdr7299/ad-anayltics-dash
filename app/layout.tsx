@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} bg-zinc-100 dark:bg-black dark:text-white text-black`}
+        className={`${inter.className} bg-white dark:bg-black dark:text-white text-black`}
       >
         <ThemeProvider
           enableSystem={false}

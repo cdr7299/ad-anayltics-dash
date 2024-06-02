@@ -8,6 +8,7 @@ import {
   YAxis,
 } from "recharts";
 
+import { useTheme } from "next-themes";
 import { AdvertiserData } from "@/types/advertiser-data";
 import {
   getFormattedDate,
@@ -21,6 +22,8 @@ const LineChartPlot = ({
 }: {
   advertiserData: AdvertiserData[];
 }) => {
+  const { theme } = useTheme();
+
   const { data, advertisers } =
     getParsedImpressionsByAdvertiser(advertiserData);
 
@@ -45,7 +48,7 @@ const LineChartPlot = ({
       <text
         x={x}
         y={y}
-        fill="#494545"
+        fill={theme === "dark" ? "#ccc" : "#000"}
         textAnchor="middle"
         dy={16}
       >{`${date}`}</text>
@@ -67,10 +70,13 @@ const LineChartPlot = ({
           <XAxis
             dataKey="date"
             strokeWidth={2}
-            stroke="#494545"
+            stroke={theme === "dark" ? "#ccc" : "#000"}
             tick={renderCustomLabel}
           />
-          <YAxis strokeWidth={2} stroke="#494545"></YAxis>
+          <YAxis
+            strokeWidth={2}
+            stroke={theme === "dark" ? "#ccc" : "#000"}
+          ></YAxis>
           <Tooltip content={<CustomTooltip />} />
           <Legend align="right" verticalAlign="top" />
           {advertisers.map((advertiser, index) => (

@@ -4,7 +4,7 @@ import Button from "../ui/button";
 import ThemeToggle from "../theme-toggle";
 const Navbar = () => (
   <>
-    <nav className="flex w-full justify-center md:justify-between  items-center px-4 py-2 border-b-[1px] border-[#aaa] text-primary-foreground backdrop-blur-3xl">
+    <nav className="flex w-full justify-center md:justify-between bg-inherit  items-center px-4 py-2 shadow-md  text-primary-foreground backdrop-blur-3xl">
       <Image
         className="hidden md:block"
         height={100}

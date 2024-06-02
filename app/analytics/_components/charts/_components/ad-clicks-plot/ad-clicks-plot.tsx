@@ -8,6 +8,7 @@ import {
   YAxis,
 } from "recharts";
 
+import { useTheme } from "next-themes";
 import {
   getFormattedDate,
   getParsedClicksByAdvertiser,
@@ -29,6 +30,7 @@ const LineChartPlot = ({
   advertiserData: AdvertiserData[];
 }) => {
   const { data, advertisers } = getParsedClicksByAdvertiser(advertiserData);
+  const { theme } = useTheme();
   if (!data.length) {
     return (
       <div className="size-full text-lg flex items-center justify-center">
@@ -50,7 +52,7 @@ const LineChartPlot = ({
       <text
         x={x}
         y={y}
-        fill="#494545"
+        fill={theme === "dark" ? "#ccc" : "#000"}
         textAnchor="middle"
         dy={16}
       >{`${date}`}</text>
@@ -73,9 +75,9 @@ const LineChartPlot = ({
             dataKey="date"
             tick={renderCustomLabel}
             strokeWidth={2}
-            stroke="#494545"
+            stroke={theme === "dark" ? "#ccc" : "#000"}
           />
-          <YAxis strokeWidth={2} stroke="#494545" />
+          <YAxis strokeWidth={2} stroke={theme === "dark" ? "#ccc" : "#000"} />
           <Tooltip content={<CustomTooltip />} />
 
           <Legend align="right" verticalAlign="top" />

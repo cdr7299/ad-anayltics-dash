@@ -1,5 +1,6 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
+import { useTheme } from "next-themes";
 import { CountryData } from "@/types/country-data";
 import CustomPieLabel from "./custom-label-pie-chart";
 import { CHART_COLORS } from "../../charts.constants";
@@ -7,6 +8,8 @@ import { getImpressionsByCountry } from "../../charts.utils";
 
 const PieChartPlot = ({ countryData }: { countryData: CountryData[] }) => {
   const data = getImpressionsByCountry(countryData);
+  const { theme } = useTheme();
+
   if (!data.length) {
     return (
       <div className="size-full text-lg flex items-center justify-center">
@@ -30,7 +33,7 @@ const PieChartPlot = ({ countryData }: { countryData: CountryData[] }) => {
             paddingAngle={1}
             fontSize={13}
             isAnimationActive={false}
-            label={CustomPieLabel}
+            label={(props) => <CustomPieLabel {...props} theme={theme} />}
             fill="#8884d8"
             minAngle={2}
           >

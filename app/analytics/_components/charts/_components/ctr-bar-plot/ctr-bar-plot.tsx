@@ -7,6 +7,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useTheme } from "next-themes";
 import { AdvertiserData } from "@/types/advertiser-data";
 import { getCtrByAdvertiser, getFormattedDate } from "../../charts.utils";
 import { CHART_COLORS } from "../../charts.constants";
@@ -17,6 +18,8 @@ const BarChartPlot = ({
 }: {
   advertiserData: AdvertiserData[];
 }) => {
+  const { theme } = useTheme();
+
   const { data, advertisers } = getCtrByAdvertiser(advertiserData);
   if (!data.length) {
     return (
@@ -39,7 +42,7 @@ const BarChartPlot = ({
       <text
         x={x}
         y={y}
-        fill="#494545"
+        fill={theme === "dark" ? "#ccc" : "#000"}
         textAnchor="middle"
         dy={16}
       >{`${date}`}</text>
@@ -63,9 +66,9 @@ const BarChartPlot = ({
             dataKey="date"
             tick={renderCustomLabel}
             strokeWidth={2}
-            stroke="#494545"
+            stroke={theme === "dark" ? "#ccc" : "#000"}
           />
-          <YAxis strokeWidth={2} stroke="#494545" />
+          <YAxis strokeWidth={2} stroke={theme === "dark" ? "#ccc" : "#000"} />
           <Tooltip content={<CustomTooltip />} />
           <Legend />
           {advertisers.map((advertiser, index) => (
