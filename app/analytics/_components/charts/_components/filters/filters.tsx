@@ -29,7 +29,7 @@ const Filters = ({
         onChange={(newData: string[]) => setSelectedAdvertisers([...newData])}
       />
     </div>
-    <div className="flex gap-2 justify-start md:items-center text-sm">
+    <div className="flex gap-2 justify-start md:items-center text-sm mr-6">
       <div>
         <label className="mr-2"> From </label>
         <DatePicker

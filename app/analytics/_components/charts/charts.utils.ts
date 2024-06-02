@@ -18,11 +18,13 @@ const getEndDate = (date: string[]) => {
   return new Date(Math.max.apply(null, parsedDates));
 };
 
-const getFormattedDate = (dateString: string) => {
+const getFormattedDate = (dateString: string, showYear = false) => {
   const formattedDate = new Date(dateString);
   const day = formattedDate.getDate() || "";
+  const year = formattedDate.getFullYear() || "";
+
   const month = MONTH_NAMES[formattedDate.getMonth()] || "";
-  return `${day} ${month}`;
+  return `${day} ${month} ${showYear ? year : ""}`;
 };
 
 const getUniqueAdvertisersAndUniqueDates = (

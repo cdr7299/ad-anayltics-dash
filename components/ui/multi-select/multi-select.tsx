@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./multi-select.module.css";
+
 const MultiSelect = ({
   data,
   onChange,
@@ -10,6 +11,7 @@ const MultiSelect = ({
   const [toggleOpen, setToggleOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>(data);
   const containerRef = useRef<HTMLDivElement>(null);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedItem = event.target.value;
     let updatedItems = [...selectedItems];
@@ -25,11 +27,21 @@ const MultiSelect = ({
   const placeholderText = selectedItems.length
     ? `${selectedItems.length} selected`
     : "None selected";
+
   const handleClickOutside = (event: MouseEvent) => {
     if (
       containerRef.current &&
       !containerRef.current.contains(event.target as Node)
     ) {
+      setToggleOpen(false);
+    }
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setToggleOpen((toggle) => !toggle);
+    } else if (event.key === "Escape") {
       setToggleOpen(false);
     }
   };
@@ -50,6 +62,11 @@ const MultiSelect = ({
       <div
         className={`${styles.multipleSelect} bg-white dark:bg-slate-600 dark:text-white`}
         onClick={() => setToggleOpen((toggle) => !toggle)}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+        aria-label="Select Advertisers"
+        role="button"
+        aria-expanded={toggleOpen}
       >
         <div className={`${styles.placeholder} dark:text-white`}>
           {placeholderText}
