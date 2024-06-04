@@ -21,15 +21,15 @@ const Filters = ({
   setEndDate: (arg: Date | null) => void;
   setSelectedAdvertisers: (arr: string[]) => void;
 }) => (
-  <section className="md:sticky md:top-0 w-full shadow-md rounded-lg bg-slate-100 dark:bg-gray-800 z-50 px-4 py-2 flex md:flex-row flex-col gap-4 justify-between md:items-center ">
-    <div className="flex gap-4 items-center text-sm">
-      <span className="font-semibold ">Advertisers </span>
+  <section className="z-50 flex w-full flex-col justify-between gap-4 rounded-lg bg-slate-100 px-4 py-2 shadow-md dark:bg-gray-800 md:sticky md:top-0 md:flex-row md:items-center">
+    <div className="flex items-center gap-4 text-sm">
+      <span className="font-semibold">Advertisers </span>
       <MultiSelect
         data={advertisers}
         onChange={(newData: string[]) => setSelectedAdvertisers([...newData])}
       />
     </div>
-    <div className="flex gap-2 justify-start md:items-center text-sm mr-6">
+    <div className="mr-6 flex justify-start gap-2 text-sm md:items-center">
       <div>
         <label className="mr-2"> From </label>
         <DatePicker

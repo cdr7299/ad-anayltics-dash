@@ -7,7 +7,7 @@ const CustomDatePickerInput = (
   <input
     {...props}
     value={getFormattedDate(props.value as string, true)}
-    className="px-4 bg-white w-[120px] dark:bg-slate-600 flex items-center justify-start py-2 rounded-md dark:text-white"
+    className="flex w-[120px] items-center justify-start rounded-md bg-white px-4 py-2 dark:bg-slate-600 dark:text-white"
   />
 );
 

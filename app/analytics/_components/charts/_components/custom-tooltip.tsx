@@ -8,8 +8,8 @@ const CustomTooltip = ({
 }: TooltipProps<number, string>) => {
   if (active) {
     return (
-      <div className="bg-white/90 dark:bg-black/90 border-2 border-slate-200 dark:border-slate-500 p-4 rounded-lg">
-        <h3 className="w-full text-md mb-2 font-bold">
+      <div className="rounded-lg border-2 border-slate-200 bg-white/90 p-4 dark:border-slate-500 dark:bg-black/90">
+        <h3 className="text-md mb-2 w-full font-bold">
           {getFormattedDate(label)}
         </h3>
         {payload?.map(({ value = "testName", name = "defaultName", color }) => (

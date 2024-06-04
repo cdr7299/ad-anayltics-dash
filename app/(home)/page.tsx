@@ -12,11 +12,11 @@ export default function Home() {
         initial="hidden"
         animate="visible"
         variants={heroTextVariants}
-        className="flex w-full gap-8 flex-col  items-center justify-center"
+        className="flex w-full flex-col items-center justify-center gap-8"
       >
-        <h1 className="text-4xl text-center font-bold px-1">
+        <h1 className="px-1 text-center text-4xl font-bold">
           {`Welcome to`}
-          <span className="text-primary ml-2">Advertiser Analytics</span>
+          <span className="ml-2 text-primary">Advertiser Analytics</span>
         </h1>
         <motion.div variants={buttonVariants} className="w-fit">
           <Button

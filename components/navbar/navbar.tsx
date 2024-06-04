@@ -4,7 +4,7 @@ import Button from "../ui/button";
 import ThemeToggle from "../theme-toggle";
 const Navbar = () => (
   <>
-    <nav className="flex w-full justify-center md:justify-between bg-inherit  items-center px-4 py-2 shadow-md  text-primary-foreground backdrop-blur-3xl">
+    <nav className="text-primary-foreground flex w-full items-center justify-center bg-inherit px-4 py-2 shadow-md backdrop-blur-3xl md:justify-between">
       <Image
         className="hidden md:block"
         height={100}
@@ -13,7 +13,7 @@ const Navbar = () => (
         alt="brand"
       />
       <NavLinks />
-      <Button disabled className="w-[150px] invisible hidden md:block">
+      <Button disabled className="invisible hidden w-[150px] md:block">
         Login
       </Button>
       <ThemeToggle />

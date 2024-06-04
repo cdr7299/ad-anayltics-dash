@@ -23,7 +23,7 @@ const BarChartPlot = ({
   const { data, advertisers } = getCtrByAdvertiser(advertiserData);
   if (!data.length) {
     return (
-      <div className="size-full text-lg flex items-center justify-center">
+      <div className="flex size-full items-center justify-center text-lg">
         No data, please adjust filters
       </div>
     );
