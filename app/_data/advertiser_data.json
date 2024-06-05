@@ -1,5 +1,26 @@
 [
   {
+    "advertiser": "Syscox2",
+    "date": "2016-02-01",
+    "impressions": 65,
+    "clicks": 268,
+    "ctr": 1.25
+  },
+  {
+    "advertiser": "Syscox2",
+    "date": "2016-02-02",
+    "impressions": 29365,
+    "clicks": 268,
+    "ctr": 1.25
+  },
+  {
+    "advertiser": "Syscox2",
+    "date": "2016-02-03",
+    "impressions": 365,
+    "clicks": 268,
+    "ctr": 1.25
+  },
+  {
     "advertiser": "Syscox",
     "date": "2016-02-01",
     "impressions": 21365,

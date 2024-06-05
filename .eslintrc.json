@@ -16,6 +16,7 @@
     "import/order": [
       1,
       {
+        "newlines-between": "always",
         "groups": [
           "external",
           "builtin",

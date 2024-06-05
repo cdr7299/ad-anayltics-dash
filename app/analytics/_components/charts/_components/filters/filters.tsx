@@ -1,6 +1,8 @@
 import React from "react";
 import DatePicker from "react-datepicker";
+
 import MultiSelect from "@/components/ui/multi-select";
+
 import { getEndDate, getStartDate } from "../../charts.utils";
 import CustomDatePickerInput from "../../custom-date-picker-input";
 
@@ -34,8 +36,8 @@ const Filters = ({
         <label className="mr-2"> From </label>
         <DatePicker
           selected={startDate}
-          minDate={getStartDate(dates)}
-          maxDate={getEndDate(dates)}
+          // minDate={getStartDate(dates)}
+          // maxDate={getEndDate(dates)}
           onChange={(date) => setStartDate(date)}
           selectsStart
           startDate={startDate}
@@ -51,8 +53,8 @@ const Filters = ({
           selected={endDate}
           onChange={(date) => setEndDate(date)}
           selectsEnd
-          minDate={getStartDate(dates)}
-          maxDate={getEndDate(dates)}
+          // minDate={getStartDate(dates)}
+          // maxDate={getEndDate(dates)}
           startDate={startDate}
           endDate={endDate}
           customInput={React.createElement(
