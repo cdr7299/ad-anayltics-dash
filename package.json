@@ -11,6 +11,7 @@
     "format:fix": "prettier --write --list-different ."
   },
   "dependencies": {
+    "@personaxyz/ad-sdk": "0.0.24",
     "framer-motion": "^11.2.10",
     "next": "14.2.3",
     "next-themes": "^0.3.0",

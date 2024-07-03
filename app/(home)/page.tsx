@@ -1,13 +1,26 @@
 "use client";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import Button from "@/components/ui/button";
+import { adClient } from "@/adconfig";
 import { buttonVariants, heroTextVariants } from "./home.animations";
 
 export default function Home() {
   const router = useRouter();
+
+  useEffect(() => {
+    adClient.showBannerAd({
+      adUnitId : '92da3950-e61a-4a5b-a524-5385dfc765b4',
+      containerId: 'testForAd'
+    })
+
+  },[])
+
   return (
     <div className="flex min-h-screen items-center justify-center">
+      <div id="testForAd" className="absolute top-20"></div>
+
       <motion.div
         initial="hidden"
         animate="visible"
