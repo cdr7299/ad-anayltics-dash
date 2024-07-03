@@ -1,6 +1,5 @@
 import { AdvertiserData } from "@/types/advertiser-data";
 import { CountryData } from "@/types/country-data";
-
 import { MONTH_NAMES } from "./charts.constants";
 
 //TODO: Make type inference work better for parsing api data, intermediate data structures are not optimal probably if you have to fight the types
@@ -118,13 +117,6 @@ const nFormatter = (num: number, digits: number) => {
     : "0";
 };
 
-const getFiltersFromSearchParams = (searchParams) => {
-  const filteredAdvertisers = searchParams.get("advertisers");
-  const filteredStartDate = searchParams.get("startDate");
-  const filteredEndDate = searchParams.get("endDate");
-  return { filteredAdvertisers, filteredStartDate, filteredEndDate };
-};
-
 export {
   sortByDate,
   getStartDate,
@@ -136,5 +128,4 @@ export {
   getCtrByAdvertiser,
   getImpressionsByCountry,
   nFormatter,
-  getFiltersFromSearchParams,
 };

@@ -7,8 +7,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useTheme } from "next-themes";
 
+import { useTheme } from "next-themes";
 import {
   getFormattedDate,
   getParsedClicksByAdvertiser,
