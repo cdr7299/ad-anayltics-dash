@@ -1,3 +1,5 @@
+'use client'
+
 import { PersonaAdSDK } from "@personaxyz/ad-sdk";
 
 const personaConfig = {
